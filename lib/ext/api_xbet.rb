@@ -1,0 +1,2 @@
+class ApiXbet < api
+end

@@ -1,0 +1,3 @@
+class ApiLeon < Api
+
+end
