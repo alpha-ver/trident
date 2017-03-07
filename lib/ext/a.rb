@@ -1,3 +1,3 @@
 class A
-	f
+	
 end

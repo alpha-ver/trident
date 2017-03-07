@@ -1,2 +1,2 @@
-class ApiXbet < api
+class ApiXbet < Api
 end
