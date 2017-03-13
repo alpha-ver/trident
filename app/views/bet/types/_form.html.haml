@@ -1,0 +1,39 @@
+= form_for @bet_type, html: { class: "form-horizontal", role: "form" } do |f|
+  -if @bet_type.errors.any?
+    .alert.alert-danger.alert-dismissable{role: "alert"}
+      %button.close{type: "button", data: {dismiss: "alert"} }
+        %span{aria: {hidden: "true"} } &times;
+        %span.sr-only Close
+      %h4= "#{pluralize(@bet_type.errors.count, "error")} prohibited this bet_type from being saved:"
+
+      %ul
+        - @bet_type.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :group_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.number_field :group_id, class: 'form-control'
+  .form-group
+    = f.label :name, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :find_names, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :find_names, class: 'form-control'
+  .form-group
+    = f.label :created, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :created, class: 'form-control'
+  .form-group
+    = f.label :api_xbet_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :api_xbet_id, class: 'form-control'
+  .form-group
+    = f.label :api_xbet_params, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :api_xbet_params, class: 'form-control'
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit class: 'btn btn-primary'

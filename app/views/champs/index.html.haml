@@ -1,0 +1,32 @@
+.page-header
+  = link_to new_champ_path, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Champ
+  %h1 Listing champs
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Find names
+        %th Created
+        %th Sport
+        %th Api xbet
+        %th Api xbet params
+        %th
+        %th
+        %th
+
+    %tbody
+      - @champs.each do |champ|
+        %tr
+          %td= champ.name
+          %td= champ.find_names
+          %td= champ.created
+          %td= champ.sport_id
+          %td= champ.api_xbet_id
+          %td= champ.api_xbet_params
+          %td= link_to 'Show', champ
+          %td= link_to 'Edit', edit_champ_path(champ)
+          %td= link_to 'Destroy', champ, data: { confirm: 'Are you sure?' }, method: :delete

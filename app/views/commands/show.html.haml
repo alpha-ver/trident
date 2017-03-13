@@ -1,0 +1,20 @@
+.page-header
+  = link_to commands_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_command_path(@command), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show command
+
+%dl.dl-horizontal
+  %dt Name:
+  %dd= @command.name
+  %dt Find names:
+  %dd= @command.find_names
+  %dt Created:
+  %dd= @command.created
+  %dt Sport:
+  %dd= @command.sport_id
+  %dt Api xbet:
+  %dd= @command.api_xbet

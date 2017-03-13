@@ -1,0 +1,2 @@
+module Bet::TypesHelper
+end

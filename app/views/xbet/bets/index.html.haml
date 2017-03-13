@@ -1,0 +1,30 @@
+.page-header
+  = link_to new_xbet_bet_path, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Bet
+  %h1 Listing xbet_bets
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Event
+        %th Bettype
+        %th Ratio
+        %th Active
+        %th Dl
+        %th
+        %th
+        %th
+
+    %tbody
+      - @xbet_bets.each do |xbet_bet|
+        %tr
+          %td= xbet_bet.event_id
+          %td= xbet_bet.bettype_id
+          %td= xbet_bet.ratio
+          %td= xbet_bet.active
+          %td= xbet_bet.dl
+          %td= link_to 'Show', xbet_bet
+          %td= link_to 'Edit', edit_xbet_bet_path(xbet_bet)
+          %td= link_to 'Destroy', xbet_bet, data: { confirm: 'Are you sure?' }, method: :delete

@@ -1,0 +1,26 @@
+.page-header
+  = link_to settings_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_setting_path(@setting), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show setting
+
+%dl.dl-horizontal
+  %dt Group:
+  %dd= @setting.group
+  %dt Name:
+  %dd= @setting.name
+  %dt Type:
+  %dd= @setting.type
+  %dt V i:
+  %dd= @setting.v_i
+  %dt V s:
+  %dd= @setting.v_s
+  %dt V t:
+  %dd= @setting.v_t
+  %dt V j:
+  %dd= @setting.v_j
+  %dt V b:
+  %dd= @setting.v_b

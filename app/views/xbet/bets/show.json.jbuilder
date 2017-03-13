@@ -1,0 +1,1 @@
+json.partial! "xbet_bets/xbet_bet", xbet_bet: @xbet_bet

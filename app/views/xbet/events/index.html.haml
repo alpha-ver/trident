@@ -1,0 +1,38 @@
+.page-header
+  = link_to new_xbet_event_path, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Event
+  %h1 Listing xbet_events
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Sport
+        %th Host command
+        %th Slave command
+        %th Commands ids
+        %th Status
+        %th Score history
+        %th Message history
+        %th Dl
+        %th Start at
+        %th
+        %th
+        %th
+
+    %tbody
+      - @xbet_events.each do |xbet_event|
+        %tr
+          %td= xbet_event.sport_id
+          %td= xbet_event.host_command_id
+          %td= xbet_event.slave_command_id
+          %td= xbet_event.commands_ids
+          %td= xbet_event.status
+          %td= xbet_event.score_history
+          %td= xbet_event.message_history
+          %td= xbet_event.dl
+          %td= xbet_event.start_at
+          %td= link_to 'Show', xbet_event
+          %td= link_to 'Edit', edit_xbet_event_path(xbet_event)
+          %td= link_to 'Destroy', xbet_event, data: { confirm: 'Are you sure?' }, method: :delete

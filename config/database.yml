@@ -1,17 +1,19 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  database: trident
   host: localhost
   pool: 5
-  user: postgres
-  password: mysecretpassword
+  user: h0
+  password: "kjkjirf"
 
 development:
+  database: trident
   <<: *default
 
 test:
+  database: trident_test
   <<: *default
 
 production:
+  database: trident
   <<: *default

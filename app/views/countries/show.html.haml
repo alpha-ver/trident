@@ -1,0 +1,20 @@
+.page-header
+  = link_to countries_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_country_path(@country), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show country
+
+%dl.dl-horizontal
+  %dt Name:
+  %dd= @country.name
+  %dt Find names:
+  %dd= @country.find_names
+  %dt Created:
+  %dd= @country.created
+  %dt Api xbet:
+  %dd= @country.api_xbet_id
+  %dt Api xbet params:
+  %dd= @country.api_xbet_params

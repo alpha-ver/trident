@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 
+  find_names: 
+  created: MyString
+  sport_id: 1
+  api_xbet: 
+
+two:
+  name: 
+  find_names: 
+  created: MyString
+  sport_id: 1
+  api_xbet: 

@@ -1,0 +1,1 @@
+json.array! @bet_groups, partial: 'bet_groups/bet_group', as: :bet_group

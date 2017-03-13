@@ -1,0 +1,1 @@
+json.array! @xbet_events, partial: 'xbet_events/xbet_event', as: :xbet_event

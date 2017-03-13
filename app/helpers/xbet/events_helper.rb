@@ -1,0 +1,2 @@
+module Xbet::EventsHelper
+end

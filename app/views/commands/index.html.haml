@@ -1,0 +1,30 @@
+.page-header
+  = link_to new_command_path, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Command
+  %h1 Listing commands
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Find names
+        %th Created
+        %th Sport
+        %th Api xbet
+        %th
+        %th
+        %th
+
+    %tbody
+      - @commands.each do |command|
+        %tr
+          %td= command.name
+          %td= command.find_names
+          %td= command.created
+          %td= command.sport_id
+          %td= command.api_xbet
+          %td= link_to 'Show', command
+          %td= link_to 'Edit', edit_command_path(command)
+          %td= link_to 'Destroy', command, data: { confirm: 'Are you sure?' }, method: :delete

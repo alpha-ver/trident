@@ -1,0 +1,20 @@
+.page-header
+  = link_to bet_groups_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_bet_group_path(@bet_group), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show bet_group
+
+%dl.dl-horizontal
+  %dt Name:
+  %dd= @bet_group.name
+  %dt Find names:
+  %dd= @bet_group.find_names
+  %dt Created:
+  %dd= @bet_group.created
+  %dt Api xbet:
+  %dd= @bet_group.api_xbet_id
+  %dt Api xbet params:
+  %dd= @bet_group.api_xbet_params

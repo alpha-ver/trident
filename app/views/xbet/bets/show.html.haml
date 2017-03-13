@@ -1,0 +1,20 @@
+.page-header
+  = link_to xbet_bets_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_xbet_bet_path(@xbet_bet), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show xbet_bet
+
+%dl.dl-horizontal
+  %dt Event:
+  %dd= @xbet_bet.event_id
+  %dt Bettype:
+  %dd= @xbet_bet.bettype_id
+  %dt Ratio:
+  %dd= @xbet_bet.ratio
+  %dt Active:
+  %dd= @xbet_bet.active
+  %dt Dl:
+  %dd= @xbet_bet.dl

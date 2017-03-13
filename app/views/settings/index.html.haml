@@ -1,0 +1,36 @@
+.page-header
+  = link_to new_setting_path, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Setting
+  %h1 Listing settings
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Group
+        %th Name
+        %th Type
+        %th V i
+        %th V s
+        %th V t
+        %th V j
+        %th V b
+        %th
+        %th
+        %th
+
+    %tbody
+      - @settings.each do |setting|
+        %tr
+          %td= setting.group
+          %td= setting.name
+          %td= setting.type
+          %td= setting.v_i
+          %td= setting.v_s
+          %td= setting.v_t
+          %td= setting.v_j
+          %td= setting.v_b
+          %td= link_to 'Show', setting
+          %td= link_to 'Edit', edit_setting_path(setting)
+          %td= link_to 'Destroy', setting, data: { confirm: 'Are you sure?' }, method: :delete

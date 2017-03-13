@@ -1,0 +1,2 @@
+module Xbet::BetsHelper
+end

@@ -1,0 +1,35 @@
+= form_for @xbet_bet, html: { class: "form-horizontal", role: "form" } do |f|
+  -if @xbet_bet.errors.any?
+    .alert.alert-danger.alert-dismissable{role: "alert"}
+      %button.close{type: "button", data: {dismiss: "alert"} }
+        %span{aria: {hidden: "true"} } &times;
+        %span.sr-only Close
+      %h4= "#{pluralize(@xbet_bet.errors.count, "error")} prohibited this xbet_bet from being saved:"
+
+      %ul
+        - @xbet_bet.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :event_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :event_id, class: 'form-control'
+  .form-group
+    = f.label :bettype_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.number_field :bettype_id, class: 'form-control'
+  .form-group
+    = f.label :ratio, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :ratio, class: 'form-control'
+  .form-group
+    = f.label :active, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.check_box :active, class: 'form-control'
+  .form-group
+    = f.label :dl, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :dl, class: 'form-control'
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit class: 'btn btn-primary'

@@ -1,0 +1,28 @@
+.page-header
+  = link_to new_sport_path, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Sport
+  %h1 Listing sports
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Find names
+        %th Created
+        %th Api xbet
+        %th
+        %th
+        %th
+
+    %tbody
+      - @sports.each do |sport|
+        %tr
+          %td= sport.name
+          %td= sport.find_names
+          %td= sport.created
+          %td= sport.api_xbet
+          %td= link_to 'Show', sport
+          %td= link_to 'Edit', edit_sport_path(sport)
+          %td= link_to 'Destroy', sport, data: { confirm: 'Are you sure?' }, method: :delete

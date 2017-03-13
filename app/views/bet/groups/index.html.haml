@@ -1,0 +1,30 @@
+.page-header
+  = link_to new_bet_group_path, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Group
+  %h1 Listing bet_groups
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Find names
+        %th Created
+        %th Api xbet
+        %th Api xbet params
+        %th
+        %th
+        %th
+
+    %tbody
+      - @bet_groups.each do |bet_group|
+        %tr
+          %td= bet_group.name
+          %td= bet_group.find_names
+          %td= bet_group.created
+          %td= bet_group.api_xbet_id
+          %td= bet_group.api_xbet_params
+          %td= link_to 'Show', bet_group
+          %td= link_to 'Edit', edit_bet_group_path(bet_group)
+          %td= link_to 'Destroy', bet_group, data: { confirm: 'Are you sure?' }, method: :delete

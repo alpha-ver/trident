@@ -1,0 +1,22 @@
+.page-header
+  = link_to champs_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_champ_path(@champ), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show champ
+
+%dl.dl-horizontal
+  %dt Name:
+  %dd= @champ.name
+  %dt Find names:
+  %dd= @champ.find_names
+  %dt Created:
+  %dd= @champ.created
+  %dt Sport:
+  %dd= @champ.sport_id
+  %dt Api xbet:
+  %dd= @champ.api_xbet_id
+  %dt Api xbet params:
+  %dd= @champ.api_xbet_params

@@ -1,0 +1,2 @@
+module Bet::GroupsHelper
+end

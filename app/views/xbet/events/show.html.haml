@@ -1,0 +1,28 @@
+.page-header
+  = link_to xbet_events_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_xbet_event_path(@xbet_event), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show xbet_event
+
+%dl.dl-horizontal
+  %dt Sport:
+  %dd= @xbet_event.sport_id
+  %dt Host command:
+  %dd= @xbet_event.host_command_id
+  %dt Slave command:
+  %dd= @xbet_event.slave_command_id
+  %dt Commands ids:
+  %dd= @xbet_event.commands_ids
+  %dt Status:
+  %dd= @xbet_event.status
+  %dt Score history:
+  %dd= @xbet_event.score_history
+  %dt Message history:
+  %dd= @xbet_event.message_history
+  %dt Dl:
+  %dd= @xbet_event.dl
+  %dt Start at:
+  %dd= @xbet_event.start_at

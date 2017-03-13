@@ -37,6 +37,11 @@ gem 'haml'
 gem 'haml-rails'
 gem 'coffee'
 gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'faraday'
+gem 'socksify'
+gem 'awesome_print'
+gem 'colorize'
+gem 'activerecord-import'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
@@ -45,6 +50,8 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'railroady'
+
 end
 
 group :development do

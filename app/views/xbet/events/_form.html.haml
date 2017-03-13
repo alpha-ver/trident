@@ -1,0 +1,51 @@
+= form_for @xbet_event, html: { class: "form-horizontal", role: "form" } do |f|
+  -if @xbet_event.errors.any?
+    .alert.alert-danger.alert-dismissable{role: "alert"}
+      %button.close{type: "button", data: {dismiss: "alert"} }
+        %span{aria: {hidden: "true"} } &times;
+        %span.sr-only Close
+      %h4= "#{pluralize(@xbet_event.errors.count, "error")} prohibited this xbet_event from being saved:"
+
+      %ul
+        - @xbet_event.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :sport_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :sport_id, class: 'form-control'
+  .form-group
+    = f.label :host_command_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.number_field :host_command_id, class: 'form-control'
+  .form-group
+    = f.label :slave_command_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.number_field :slave_command_id, class: 'form-control'
+  .form-group
+    = f.label :commands_ids, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :commands_ids, class: 'form-control'
+  .form-group
+    = f.label :status, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :status, class: 'form-control'
+  .form-group
+    = f.label :score_history, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :score_history, class: 'form-control'
+  .form-group
+    = f.label :message_history, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :message_history, class: 'form-control'
+  .form-group
+    = f.label :dl, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :dl, class: 'form-control'
+  .form-group
+    = f.label :start_at, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.datetime_select :start_at, class: 'form-control'
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit class: 'btn btn-primary'

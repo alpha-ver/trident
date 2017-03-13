@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  group: MyString
+  name: MyString
+  type: 
+  v_i: 1
+  v_s: MyString
+  v_t: MyText
+  v_j: 
+  v_b: false
+
+two:
+  group: MyString
+  name: MyString
+  type: 
+  v_i: 1
+  v_s: MyString
+  v_t: MyText
+  v_j: 
+  v_b: false

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sport_id: 
+  host_command_id: 1
+  slave_command_id: 1
+  commands_ids: 
+  status: 
+  score_history: 
+  message_history: 
+  dl: 
+  start_at: 2017-03-07 20:47:09
+
+two:
+  sport_id: 
+  host_command_id: 1
+  slave_command_id: 1
+  commands_ids: 
+  status: 
+  score_history: 
+  message_history: 
+  dl: 
+  start_at: 2017-03-07 20:47:09
