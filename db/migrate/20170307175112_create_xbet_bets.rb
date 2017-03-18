@@ -6,7 +6,7 @@ class CreateXbetBets < ActiveRecord::Migration[5.0]
       t.float   :ratio
       t.boolean :active
 
-      t.integer :p
+      t.float   :p
       t.json    :pl
       #############
 

@@ -1,0 +1,30 @@
+.page-header
+  = link_to new_country_path, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Country
+  %h1 Listing countries
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Find names
+        %th Created
+        %th Api xbet
+        %th Api xbet params
+        %th
+        %th
+        %th
+
+    %tbody
+      - @countries.each do |country|
+        %tr
+          %td= country.name
+          %td= country.find_names
+          %td= country.created
+          %td= country.api_xbet_id
+          %td= country.api_xbet_params
+          %td= link_to 'Show', country
+          %td= link_to 'Edit', edit_country_path(country)
+          %td= link_to 'Destroy', country, data: { confirm: 'Are you sure?' }, method: :delete

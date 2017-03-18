@@ -40,6 +40,14 @@ diagram:models:complete_with_engines
 diagram:setup:create_new_doc_folder_if_needed
 haml:erb2haml
 initializers
+leon:add_events
+leon:details_new_events
+leon:live_events
+leon:upd_all
+leon:upd_betgroups
+leon:upd_bettypes
+leon:upd_champs
+leon:upd_sports
 log:clear
 middleware
 notes
@@ -55,7 +63,8 @@ tmp:clear
 tmp:create
 xbet:add_events
 xbet:details_new_events
-xbet:upd!
+xbet:live_events
+xbet:upd_all
 xbet:upd_betgroups
 xbet:upd_bettypes
 xbet:upd_champs

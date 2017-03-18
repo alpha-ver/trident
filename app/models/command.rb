@@ -34,11 +34,12 @@ class Command < ApplicationRecord
         when 'xbet'
           model_command = self.new(
             :api_xbet_id => hash[:api_xbet_id],
-            :sport_id    => hash[:sport_id]
-            :name        => hash[:name]
+            :sport_id    => hash[:sport_id],
+            :name        => hash[:name],
             :find_names  => [normalise_name]
             )
           model_command.save
+
         end
       else
         case hash[:type]
@@ -53,10 +54,10 @@ class Command < ApplicationRecord
       end
 
     else
-      model_command
+
     end
 
-
+    model_command
   end
 
 end

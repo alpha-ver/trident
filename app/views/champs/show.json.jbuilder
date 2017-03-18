@@ -1,1 +1,0 @@
-json.partial! "champs/champ", champ: @champ

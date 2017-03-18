@@ -42,6 +42,8 @@ gem 'socksify'
 gem 'awesome_print'
 gem 'colorize'
 gem 'activerecord-import'
+gem 'listjs-rails'
+
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'

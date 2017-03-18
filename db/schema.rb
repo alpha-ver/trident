@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170309130119) do
+ActiveRecord::Schema.define(version: 20170314082553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,16 +25,18 @@ ActiveRecord::Schema.define(version: 20170309130119) do
     t.json     "api_xbet_params"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.integer  "api_leon_id"
+    t.json     "api_leon_params"
   end
 
   create_table "commands", force: :cascade do |t|
     t.string   "name"
-    t.string   "find_names", default: [],              array: true
+    t.string   "find_names",  default: [],              array: true
     t.string   "created"
     t.integer  "sport_id"
-    t.integer  "api_xbet"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "api_xbet_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "countries", force: :cascade do |t|
@@ -69,6 +71,8 @@ ActiveRecord::Schema.define(version: 20170309130119) do
     t.json     "api_xbet_params"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.integer  "api_leon_id"
+    t.json     "api_leon_params"
   end
 
   create_table "xbet_betgroups", force: :cascade do |t|
@@ -84,6 +88,8 @@ ActiveRecord::Schema.define(version: 20170309130119) do
     t.integer  "bettype_id"
     t.float    "ratio"
     t.boolean  "active"
+    t.float    "p"
+    t.json     "pl"
     t.json     "dl"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -102,6 +108,13 @@ ActiveRecord::Schema.define(version: 20170309130119) do
 
   create_table "xbet_events", force: :cascade do |t|
     t.integer  "champ_id"
+    t.integer  "const_id"
+    t.integer  "contora"
+    t.string   "dopinfo"
+    t.boolean  "finish"
+    t.integer  "maingame_id"
+    t.integer  "num"
+    t.integer  "period"
     t.integer  "host_command_id"
     t.integer  "slave_command_id"
     t.integer  "commands_ids"
@@ -110,6 +123,7 @@ ActiveRecord::Schema.define(version: 20170309130119) do
     t.json     "message_history"
     t.json     "dl"
     t.datetime "start_at"
+    t.json     "score"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end

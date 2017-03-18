@@ -20,7 +20,11 @@ class Api < Daemon
         c.adapter  :net_http
         c.response :logger
       end
-      response = connection.get
+      if params.class == Hash && params[:type] == :post
+        response = connection.post
+      else
+        response = connection.get
+      end
 
       if response.status == 200
         if params.class == Hash && params[:string]

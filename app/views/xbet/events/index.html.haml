@@ -12,10 +12,6 @@
         %th Host command
         %th Slave command
         %th Commands ids
-        %th Status
-        %th Score history
-        %th Message history
-        %th Dl
         %th Start at
         %th
         %th
@@ -24,14 +20,10 @@
     %tbody
       - @xbet_events.each do |xbet_event|
         %tr
-          %td= xbet_event.sport_id
-          %td= xbet_event.host_command_id
-          %td= xbet_event.slave_command_id
+          %td= xbet_event.champ.name
+          %td= xbet_event.command_host.name
+          %td= xbet_event.command_slave.name
           %td= xbet_event.commands_ids
-          %td= xbet_event.status
-          %td= xbet_event.score_history
-          %td= xbet_event.message_history
-          %td= xbet_event.dl
           %td= xbet_event.start_at
           %td= link_to 'Show', xbet_event
           %td= link_to 'Edit', edit_xbet_event_path(xbet_event)

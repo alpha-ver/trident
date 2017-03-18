@@ -1,0 +1,55 @@
+%h1 Listing sports
+
+.container
+  .row
+    .col
+      %h3
+        list not xbet
+      %ul.list-group
+        - @sports_xbet.each do |sport|
+          %li.list-group-item.list-group-item-action.justify-content-between
+            =sport.name
+            %span.badge.badge-default.badge-pill
+              0
+
+    .col
+      %h3
+        list not leon
+      %ul.list-group
+        - @sports_leon.each do |sport|
+          %li.list-group-item.list-group-item-action.justify-content-between
+            =sport.name
+            %span.badge.badge-default.badge-pill
+              0
+
+.page-header
+  = link_to new_sport_path, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Sport
+
+
+
+
+/.table-responsive
+/  %table.table.table-striped.table-bordered.table-hover
+/    %thead
+/      %tr
+/        %th Name
+/        %th Find names
+/        %th Created
+/        %th Api xbet
+/        %th
+/        %th
+/        %th
+/
+/    %tbody
+/      - @sports_xbet.each do |sport|
+/        %tr
+/          %td= sport.name
+/          %td= sport.find_names
+/          %td= sport.created
+/
+/          %td= link_to 'Show', sport
+/          %td= link_to 'Edit', edit_sport_path(sport)
+/          %td= link_to 'Destroy', sport, data: { confirm: 'Are you sure?' }, method: :delete
+

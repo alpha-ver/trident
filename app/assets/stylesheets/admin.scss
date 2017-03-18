@@ -1,0 +1,70 @@
+// Place all the styles related to the Champs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.con-selected{
+  background-color: rgba(227, 242, 253, 0.9);
+  padding-top: 10px;
+  padding-bottom: 55px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #999;
+  position: sticky;
+  top: -1px;
+  z-index: 100;
+
+  .col-left, .col-right{
+    align-self: center;
+  }
+
+  .col-left{
+    text-align: right;
+    &::after{
+    content: "▶";
+    color: #ddd;
+    }
+  }
+
+  .col-right{
+
+    &::before{
+      content: "◀";
+      color: #ddd;
+    }
+
+  }
+
+}
+
+
+.con-list{
+  h3{
+    text-align: center;
+    padding-top: 24px;
+    border-bottom: 6px solid #e3f2fd;
+  }
+
+  .list-group{
+    padding-top:15px
+  }
+
+  span.sort{
+    cursor: pointer;
+    &:hover{
+      transition: background-color .3s;
+      background-color: #E3F2FD;
+    }
+
+  }
+
+  .sticky{
+    position: sticky;
+    top: 41px;
+    z-index: 101;
+  }
+
+}
+
+
+
+

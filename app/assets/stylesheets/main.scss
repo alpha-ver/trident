@@ -1,0 +1,71 @@
+// Place all the styles related to the Sports controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.navbar-light{
+  background-color: #e3f2fd;
+
+}
+
+.loading{
+  overflow: hidden;
+
+  &::after{
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(250,250,250,0.9);
+    z-index: 999;
+  }
+}
+
+
+.notify{
+  position: fixed;
+  bottom: 0;
+  display: block;
+  right: 0;
+  z-index: 999;
+  transform: translateX(100%);
+  height:50%;
+  width:50%;
+  background-color: rgba(229, 243, 253, 0.9);
+  border: 2px solid rgba(255,255,255,0.1);
+  transition: transform .3s;
+
+  &::before{
+    content:"";
+    display: inline-block;
+    width: 40px;
+    height: 100%;
+    transform: translateX(-100%);
+    background-color: #0275d8;
+    color: #ddd;
+    font-size: 25px;
+    position: absolute;
+  }
+
+  .alert{
+    margin:20px;
+  }
+
+  &:hover{
+    transform: translate(0);
+    transition: transform .4s;
+
+
+    &::before{
+      background-color: rgba(229, 243, 253, 0.9);
+      transition-delay: .1s;
+      transition: background-color .2s;
+      content: ""
+    }
+
+
+  }
+
+}

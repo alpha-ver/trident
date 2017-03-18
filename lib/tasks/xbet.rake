@@ -1,7 +1,7 @@
 namespace :xbet do
 
   desc "Global update"
-  task :upd! => :environment do
+  task :upd_all => :environment do
     Rake::Task["xbet:upd_sports"].invoke
     Rake::Task["xbet:upd_champs"].invoke
     Rake::Task["xbet:upd_betgroups" ].invoke
@@ -56,7 +56,7 @@ namespace :xbet do
         #=> { :CountryId=>225, :Game=>nil, :Id=>3355, :MbTop=>300, :Name=>"КХЛ", :Sport=>2, :Top=>1}
         model_champ = model_sport.champs.find_by(:api_xbet_id => champ[:Id])
         if model_champ.nil?
-          normalize_name = champ[:Name].mb_chars.downcase.to_s
+          normalize_name = champ[:Name].mb_chars.downcase.to_s.gsub("'","")
           model_champ = model_sport.champs.find_by("'#{normalize_name}' = ANY (find_names)")
           if model_champ.nil?
             model_champ = Champ.new(
@@ -169,24 +169,45 @@ namespace :xbet do
   task :details_new_events => :environment do
     puts "Add details info in status 0(no parsed)".colorize(:green)
     model_events = Xbet::Event.where(:status => 0)
-    puts "Find event count:#{events.count}".colorize(:green)
+    puts "Find event count:#{model_events.count}".colorize(:green)
     api = Api_xbet.new
     model_events.each do |model_event|
       response_event = api.detail_event(model_event.id)
       if !response_event.nil?
-        if !response_event[:Value].blank?
+        if response_event[:Value].blank?
         # id: 108661177, champ_id: 1, host_command_id: nil, slave_command_id: nil,
         # commands_ids: nil, status: 0, score_history: nil,
         # message_history: nil, dl: nil, start_at: nil
-          puts "Возможно игра перешла в лайв. РЕАЛИЗОВАТЬ!".colorize(:red) #@todo
+          puts "Возможно игра закончилась. РЕАЛИЗОВАТЬ!".colorize(:red) #@todo
           ap response_event
           ap model_event
         else
           model_event.res_upd(response_event)
 
-          #model_sport = model_event.champ.sport #можно уменьшить колличество запросов запоминая чемпионат
+        end
+      end
+    end
 
+  end
 
+  desc "Live update"
+  task :live_events => :environment do
+    puts "Add details info in status 0(no parsed)".colorize(:green)
+    model_events = Xbet::Event.where(:status => 2)
+    puts "Find event count:#{model_events.count}".colorize(:green)
+    api = Api_xbet.new
+    model_events.each do |model_event|
+      response_event = api.detail_event(model_event.id)
+      if !response_event.nil?
+        if response_event[:Value].blank?
+        # id: 108661177, champ_id: 1, host_command_id: nil, slave_command_id: nil,
+        # commands_ids: nil, status: 0, score_history: nil,
+        # message_history: nil, dl: nil, start_at: nil
+          puts "Возможно игра закончилась. РЕАЛИЗОВАТЬ!".colorize(:red) #@todo
+          ap response_event
+          ap model_event
+        else
+          model_event.res_upd(response_event)
 
         end
       end

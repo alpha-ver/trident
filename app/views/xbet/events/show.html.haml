@@ -8,21 +8,34 @@
   %h1 Show xbet_event
 
 %dl.dl-horizontal
-  %dt Sport:
-  %dd= @xbet_event.sport_id
   %dt Host command:
-  %dd= @xbet_event.host_command_id
+  %dd= @xbet_event.command_host.name
+
   %dt Slave command:
-  %dd= @xbet_event.slave_command_id
-  %dt Commands ids:
-  %dd= @xbet_event.commands_ids
+  %dd= @xbet_event.command_slave.name
+
   %dt Status:
   %dd= @xbet_event.status
+
   %dt Score history:
   %dd= @xbet_event.score_history
   %dt Message history:
   %dd= @xbet_event.message_history
-  %dt Dl:
-  %dd= @xbet_event.dl
+
   %dt Start at:
   %dd= @xbet_event.start_at
+
+%h3 Bets
+
+%ul
+  -@xbet_event.bets.each do |i|
+    %li
+      %b
+        =i.bettype.name
+      %i
+        =i.bettype.betgroup.name
+
+      %pre
+        =i.bettype.to_json
+      %pre
+        =i.to_json

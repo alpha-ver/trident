@@ -30,17 +30,17 @@ class Xbet::Event < ApplicationRecord
       model_host_command = Command.get_or_create(
         :api_xbet_id => res[:Value][0][:Opp1Id],
         :sport_id    => model_sport.id,
-        :name        => res[:Value][0][:Opp1]
+        :name        => res[:Value][0][:Opp1],
         :type        => 'xbet'
       )
       model_slave_command   = Command.get_or_create(
         :api_xbet_id => res[:Value][0][:Opp2Id],
         :sport_id    => model_sport.id,
-        :name        => res[:Value][0][:Opp2]
+        :name        => res[:Value][0][:Opp2],
         :type        => 'xbet'
       )
 
-      self.host_command_id  =  model_host_command.id
+      self.host_command_id  = model_host_command.id
       self.slave_command_id = model_slave_command.id
 
       #type
@@ -51,22 +51,10 @@ class Xbet::Event < ApplicationRecord
       end
 
       #bets
-      response_event[:Value][0][:Events].map do |event|
-        model_bet = Xbet::Bet.new(
-          :event_id   => self.id,
-          :bettype_id => event[:T],
-          :ratio      => event[:C],
-          :active     => event[:B] == 0 ? true : false,
-          :p          => event[:P],
-          :pl         => event[:PL],
-          ###########################
-          :dl         => event
-        )
+      Xbet::Bet.add(res[:Value][0][:Events], self.id)
 
-        model_bet.save
-      end
 
-      self.constid     = res[:Value][0][:ConsId]
+      self.const_id    = res[:Value][0][:ConsId]
       self.contora     = res[:Value][0][:Contora]
       self.dopinfo     = res[:Value][0][:DopInfo]
       self.finish      = res[:Value][0][:Finish] == 0 ? false : true
@@ -77,7 +65,7 @@ class Xbet::Event < ApplicationRecord
       self.score       = res[:Value][0][:score]
       self.dl          = res[:Value]
 
-      self.save
+      ap self.save
     end
   end
 

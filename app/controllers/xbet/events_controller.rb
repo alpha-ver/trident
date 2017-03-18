@@ -4,7 +4,7 @@ class Xbet::EventsController < ApplicationController
   # GET /xbet/events
   # GET /xbet/events.json
   def index
-    @xbet_events = Xbet::Event.all
+    @xbet_events = Xbet::Event.where(:status => 1)
   end
 
   # GET /xbet/events/1

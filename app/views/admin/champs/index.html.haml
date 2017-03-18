@@ -1,0 +1,117 @@
+.container.page-header
+  .row
+    .col
+      %h1 Listing champs
+
+.container.form
+  .row
+    .col
+      =form_for Champ.new, :method => :get, :url => "" do |f|
+        .row
+          .col-11
+            =f.select :sport_id, options_from_collection_for_select(@sport_form, :id, :name, @current_sport.id), {},:class=>"form-control"
+          .col
+            =f.submit t('go', :default => 'Go'), :class=>"form-control"
+
+.container-fluid.con-selected
+  =form_for Champ.new do |f|
+    .row
+      .col-5.col-left
+        =f.hidden_field :id, multiple: true, :id => 'FormIdLeft'
+        %span
+
+        %i
+          =t 'no_selected'
+      .col-2
+        =f.submit t('linked', :default => 'Linked'), :class => 'btn btn-sm btn-outline-primary form-control',
+                                                     :disabled => 'disabled'
+
+      .col-5.col-right
+        =f.hidden_field :id, multiple: true, :id => 'FormIdRight'
+        %span
+
+        %i
+          =t 'no_selected'
+
+
+
+
+.container.con-list
+  .row
+    .col.col-list#listLeft
+      %h3
+        =t 'list_not_xbet'
+      .row.sticky
+        .col
+          .input-group
+            %input.list-group-item.input-left.search{ :type=>"text",
+                                                      :class=>"form-control",
+                                                      :placeholder=> t('search', :default=>'Search')}
+            %span.input-group-addon.sort{:data => {:sort => 'name'}} ⮃
+
+      .row
+        .col
+          %ul.list-group.list#ulLeft
+            - @champs_xbet.each do |b|
+              %li.list-group-item.list-group-item-action{:data => {:id => b.id}}
+                %span.name
+                  =b.name
+                  /%span.badge.badge-default.badge-pill
+                  /  0
+
+    .col.col-list#listRight
+      %h3
+        =t 'list_not_leon'
+      .row.sticky
+        .col
+          .input-group
+            %input.list-group-item.input-right.search{ :type=>"text",
+                                                       :class=>"form-control",
+                                                       :placeholder=> t('search', :default=>'Search')}
+            %span.input-group-addon.sort{:data => {:sort => 'name'}} ⮃
+
+      .row
+        .col
+          %ul.list-group.list#ulRight
+            - @champs_leon.each do |b|
+              %li.list-group-item.list-group-item-action.name{:data => {:id => b.id}}
+                %span.name
+                  =b.name
+                  /%span.badge.badge-default.badge-pill
+                  /  0
+
+
+
+
+
+
+/= link_to new_champ_path, class: 'btn btn-primary' do
+/  %span.glyphicon.glyphicon-plus
+/  New Champ
+
+/.table-responsive
+/  %table.table.table-striped.table-bordered.table-hover
+/    %thead
+/      %tr
+/        %th Name
+/        %th Find names
+/        %th Created
+/        %th Sport
+/        %th Api xbet
+/        %th Api xbet params
+/        %th
+/        %th
+/        %th
+/
+/    %tbody
+/      - @champs.each do |champ|
+/        %tr
+/          %td= champ.name
+/          %td= champ.find_names
+/          %td= champ.created
+/          %td= champ.sport_id
+/          %td= champ.api_xbet_id
+/          %td= champ.api_xbet_params
+/          %td= link_to 'Show', champ
+/          %td= link_to 'Edit', edit_champ_path(champ)
+/          %td= link_to 'Destroy', champ, data: { confirm: 'Are you sure?' }, method: :delete

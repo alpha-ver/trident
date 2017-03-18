@@ -1,1 +1,0 @@
-json.partial! "xbet_events/xbet_event", xbet_event: @xbet_event

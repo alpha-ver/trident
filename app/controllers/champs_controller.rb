@@ -1,5 +1,5 @@
 class ChampsController < ApplicationController
-  before_action :set_champ, only: [:show, :edit, :update, :destroy]
+  before_action :set_champ, only: [:show, :edit, :destroy]
 
   # GET /champs
   # GET /champs.json
@@ -40,15 +40,46 @@ class ChampsController < ApplicationController
   # PATCH/PUT /champs/1
   # PATCH/PUT /champs/1.json
   def update
-    respond_to do |format|
-      if @champ.update(champ_params)
-        format.html { redirect_to @champ, notice: 'Champ was successfully updated.' }
-        format.json { render :show, status: :ok, location: @champ }
-      else
-        format.html { render :edit }
-        format.json { render json: @champ.errors, status: :unprocessable_entity }
+    if params[:id] == "linked" && params[:champ][:id].count == 2
+      champs = Champ.where(:id => params[:champ][:id])
+
+      if champs[1].created    == "api_leon"
+        champs[0].api_leon_id     = champs[1].api_leon_id
+        champs[0].api_leon_params = champs[1].api_leon_params
+      elsif champs[1].created == "api_xbet"
+        champs[0].api_xbet_id     = champs[1].api_xbet_id
+        champs[0].api_xbet_params = champs[1].api_xbet_params
+      elsif champs[1].created == "merged"
+
       end
+
+      champs[0].find_names += champs[1].find_names
+      champs[0].created = "merged|leon,xbet"
+      champs[0].save
+
+      champs[1].all_bet_events.each do |events|
+        events.each do |event|
+          event.champ_id = champs[0].id
+          event.save
+        end
+      end
+
+      champs[1].delete
+
+      champs = Champ.where(:id => params[:champ][:id])
+
+      respond_to do |format|
+        if 1==1
+          #format.html { redirect_to @champ, notice: 'Champ was successfully updated.' }
+          format.json { render json: champs,  status: :ok }
+        else
+          #format.html { render :edit }
+          format.json { render json: @champ.errors, status: :unprocessable_entity }
+        end
+      end
+
     end
+
   end
 
   # DELETE /champs/1
